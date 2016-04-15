@@ -42,9 +42,23 @@ $(function() {
   //Grade
   $("#grade-submit").click(function() {
     var gradeString = $("#grade").val();
-
-    $("#grade-result").text("Opps, I'm broken! Fix me.");
+    var grade = parseInt(gradeString);
+    
+    if (grade >= 60) {
+      $("#grade-result").text("You passed!");
+    } else { // it worked without the "if (grade <= 59)"
+      $("#grade-result").text("Time for extra credit, you're failing!");
+    }
   });
 
   //Is your rent affordable?
-});
+  $("#rent-submit").click(function() {
+    var incomeString = $("#income").val();
+    var income = parseInt(incomeString);
+
+    var thirtyPercentOfIncome = income * 0.3;
+    var monthlyMaxRent = thirtyPercentOfIncome / 12;
+   
+    $("#rent-result").text("You should not pay more than $" + monthlyMaxRent + " each month.");
+  });
+ });
